@@ -1,4 +1,4 @@
-﻿namespace SkyBots.Api.Connection;
+﻿namespace SkyBots.Api.Server;
 
 public enum AuthResult : sbyte
 {
@@ -6,6 +6,8 @@ public enum AuthResult : sbyte
     IslandNotFound,
     VersionError,
     Successfully,//         <----------
+    ServerNotFound,
+    ServerNotAnswer
 
     
 }

@@ -1,4 +1,4 @@
-using SkyBots.Api.Connection;
+using SkyBots.Api.Server;
 
 namespace SkyBots.Api;
 

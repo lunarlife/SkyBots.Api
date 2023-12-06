@@ -1,4 +1,4 @@
-namespace SkyBots.Api.Connection;
+namespace SkyBots.Api.Server;
 
 public struct Token
 {
