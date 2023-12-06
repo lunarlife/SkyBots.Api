@@ -1,5 +1,7 @@
 ﻿using SkyBots.Api;
 using SkyBots.Api.Connection;
+using SkyBots.Api.Math;
+using SkyBots.Api.Plugins.Internal.Transform;
 
 namespace Example;
 
@@ -7,16 +9,24 @@ public class Program : SkyProgram
 {
     public override Token Token => "TOKEN HERE";
 
-    public override void Init(ConnectionResult result)
+    public override async void Init(AuthResult result)
     {
         Console.WriteLine(result);
-        if (result != ConnectionResult.Connected) return;
+        if (result != AuthResult.Successfully) return;
         var availableBots = Island.GetAvailableBots();
         if (availableBots.Length == 0) Console.WriteLine("No available bots.");
-        Island.InitBot(new BotInitArgs
+        var bot = new TestBot();
+        var botBindingResult = await bot.Bind(new BotInitArgs
         {
             DisplayName = "Example",
             Id = availableBots.First()
-        }).AddHook<MinerBotHook>().Activate();
+        });
+        Console.WriteLine(botBindingResult);
+        var plugin = bot.GetPlugin<ITransformBotPlugin>();
+        var task = plugin.Move(new MoveArgs
+        {
+            Sprint = false,
+            Target = new Vector3<float>(10f,10f)
+        }, out var cancelToken);
     }
 }

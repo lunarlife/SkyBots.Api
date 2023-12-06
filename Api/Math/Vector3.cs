@@ -17,11 +17,23 @@ public struct Vector3<T> : IVector<T> where T : INumber<T>
         Z = z;
     }
 
+    public Vector3(T x, T y) : this(x, y, T.Zero)
+    {
+    }
+
+    public Vector3(Vector2<T> vec, T z) : this(vec.X, vec.Y, z)
+    {
+        
+    }
+    public Vector3(Vector2<T> vec) : this(vec.X, vec.Y, T.Zero)
+    {
+    }
     public T[] AsArray() => new[] { X, Y, Z };
 
     public T Length()
     {
-        return (T)Convert.ChangeType(System.Math.Sqrt(((IConvertible)(X * X + Y * Y + Z * Z)).ToDouble(null)), typeof(T));
+        return (T)Convert.ChangeType(System.Math.Sqrt(((IConvertible)(X * X + Y * Y + Z * Z)).ToDouble(null)),
+            typeof(T));
     }
 
     public Vector3<T> Normalized()

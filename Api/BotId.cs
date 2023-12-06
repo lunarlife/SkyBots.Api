@@ -2,13 +2,11 @@ namespace SkyBots.Api;
 
 public readonly struct BotId : IEquatable<BotId>
 {
- 
+    private readonly sbyte _id;
 
-    private readonly byte _id;
+    public BotId(int id) => _id = (sbyte)id;
 
-    public BotId(byte id) => _id = id;
-
-    public static implicit operator BotId(int value) => new((byte)value);
+    public static implicit operator BotId(int value) => new(value);
 
     public static bool operator ==(BotId left, BotId right) => left._id == right._id;
     public static bool operator !=(BotId left, BotId right) => !(left == right);
