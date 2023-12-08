@@ -2,8 +2,7 @@ namespace SkyBots.Api;
 
 public static class App
 {
-    private static SkyBots Instance => SkyBots.Implementation;
-    public static IPluginManager PluginManager => Instance.PluginManager;
+    private static SkyBotsBase Instance => SkyBotsBase.Implementation;
     public static bool IsEnabled => Instance.IsEnabled;
     
 }

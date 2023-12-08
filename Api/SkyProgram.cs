@@ -5,6 +5,7 @@ namespace SkyBots.Api;
 public abstract class SkyProgram
 {
     public abstract Token Token { get; }
-    public IIsland Island => SkyBots.Implementation.Island;
+    public abstract string Password { get; }
+    public IIsland Island => SkyBotsBase.Implementation.Island;
     public abstract void Init(AuthResult result);
 }

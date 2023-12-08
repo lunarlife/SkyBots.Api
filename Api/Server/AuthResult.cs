@@ -2,12 +2,19 @@
 
 public enum AuthResult : sbyte
 {
+    Invalid,
     InvalidPassword,
     IslandNotFound,
     VersionError,
-    Successfully,//         <----------
+    Successfully,
+    
+    //CLIENT
     ServerNotFound,
-    ServerNotAnswer
+    ServerNotAnswer,
+    InvalidToken,
+    InternalError
+    
+    
 
     
 }

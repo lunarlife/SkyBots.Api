@@ -1,19 +1,46 @@
 namespace SkyBots.Api.Entities;
 
-public class EntityType
+public struct EntityType
 {
-    public static readonly EntityType[] Types = new EntityType[ENTITY_TYPES_COUNT];
+    public static readonly EntityType[] TYPES = new EntityType[ENTITY_TYPES_COUNT];
     public int Id { get; }
     public bool IsAlive { get; init; }
     public bool IsSpawnable { get; init; }
 
-    public EntityType(int id)
+    private EntityType(int id)
     {
-        Types[id] = this;
+        TYPES[id] = this;
         Id = id;
     }
 
-    public const int ENTITY_TYPES_COUNT = 125;
+    public EntityType()
+    {
+        Id = 124;//UNKNOWN
+    }
+    public static bool operator ==(EntityType left, EntityType right) => left.Id == right.Id;
+
+    public static bool operator !=(EntityType left, EntityType right) => !(left == right);
+    private bool Equals(EntityType other) => Id == other.Id;
+
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((EntityType)obj);
+    }
+    public override int GetHashCode() => Id;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public const int ENTITY_TYPES_COUNT = 126;
 
     public static readonly EntityType DROPPED_ITEM = new(0)
     {
@@ -763,5 +790,11 @@ public class EntityType
     {
         IsAlive = false,
         IsSpawnable = false
+    };
+
+    public static readonly EntityType BOT = new(125)
+    {
+        IsAlive = true,
+        IsSpawnable = true
     };
 }

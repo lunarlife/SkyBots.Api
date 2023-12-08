@@ -27,4 +27,6 @@ public struct Vector2<T> : IVector<T> where T : INumber<T>
         var length = Length();
         return new Vector2<T>(X / length, Y / length);
     }
+
+    public override string ToString() => $"{{{X:F2};{Y:F2}}}";
 }

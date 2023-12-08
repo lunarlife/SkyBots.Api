@@ -23,11 +23,12 @@ public struct Vector3<T> : IVector<T> where T : INumber<T>
 
     public Vector3(Vector2<T> vec, T z) : this(vec.X, vec.Y, z)
     {
-        
     }
+
     public Vector3(Vector2<T> vec) : this(vec.X, vec.Y, T.Zero)
     {
     }
+
     public T[] AsArray() => new[] { X, Y, Z };
 
     public T Length()
@@ -41,4 +42,6 @@ public struct Vector3<T> : IVector<T> where T : INumber<T>
         var length = Length();
         return new Vector3<T>(X / length, Y / length, Z / length);
     }
+
+    public override string ToString() => $"{{{X:F2};{Y:F2};{Z:F2}}}";
 }
