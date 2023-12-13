@@ -1,21 +1,15 @@
+using SkyBots.Api.Components.Entities.Bots;
 using SkyBots.Api.Components.Entities.Bots.Internal.Navigate;
 using SkyBots.Api.Components.Entities.Bots.Internal.TaskMachine;
-using SkyBots.Api.Entities;
-using SkyBots.Api.Events.Tasks;
 
 namespace SkyBots.Api.Events.Bots.Navigate;
 
-public class BotMoveCompletedEventArgs : ITaskCompletedEventArgs
+public class BotMoveCompletedEventArgs : BotEventArgs
 {
     public BotMoveResult Result { get; }
-    public IEntity Bot { get; }
 
-    public BotMoveCompletedEventArgs(BotMoveResult result, IEntity bot, SkyTask task)
+    public BotMoveCompletedEventArgs(BotMoveResult result, BotComponent bot, SkyTask task) : base(bot, task)
     {
         Result = result;
-        Bot = bot;
-        Task = task;
     }
-
-    public SkyTask Task { get; }
 }

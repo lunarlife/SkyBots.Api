@@ -80,10 +80,10 @@ public struct Vector3<T> : IVector<T> where T : INumber<T>
     public static implicit operator Vector2<T>(Vector3<T> vector) => new(vector.X, vector.Y);
 
     public static implicit operator Vector3<float>(Vector3<T> vector) =>
-        new(Convert.ToSingle(vector.X), Convert.ToSingle(vector.Y));
+        new(Convert.ToSingle(vector.X), Convert.ToSingle(vector.Y),  Convert.ToSingle(vector.Z));
 
     public static implicit operator Vector3<int>(Vector3<T> vector) =>
-        new(Convert.ToInt32(vector.X), Convert.ToInt32(vector.Y));
+        new(Convert.ToInt32(vector.X), Convert.ToInt32(vector.Y),  Convert.ToInt32(vector.Z));
 
     public static bool operator >(Vector3<T> left, Vector3<T> right) =>
         left.X > right.X || left.Y > right.Y || left.Z > right.Z;

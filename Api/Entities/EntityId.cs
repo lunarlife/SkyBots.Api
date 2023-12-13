@@ -6,7 +6,7 @@ public readonly struct EntityId : IEquatable<EntityId>
 
     public EntityId(int id) => _id = id;
 
-    
+
     public static implicit operator EntityId(int value) => new(value);
 
     public static bool operator ==(EntityId left, EntityId right) => left._id == right._id;

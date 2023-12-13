@@ -4,7 +4,6 @@ namespace SkyBots.Api.Mathematics;
 
 public struct Vector2<T> : IVector<T> where T : INumber<T>
 {
-
     public static readonly Vector2<T> ZERO = new(T.Zero, T.Zero);
     public static readonly Vector2<T> ONE = new(T.One, T.One);
     public static readonly Vector2<T> LEFT = new(-T.One, T.Zero);
@@ -12,9 +11,9 @@ public struct Vector2<T> : IVector<T> where T : INumber<T>
     public static readonly Vector2<T> UP = new(T.Zero, T.One);
     public static readonly Vector2<T> DOWN = new(T.Zero, -T.One);
 
-    
+
     public int Dimension => 2;
-    
+
     public T X;
     public T Y;
 

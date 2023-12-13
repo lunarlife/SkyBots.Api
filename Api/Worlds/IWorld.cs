@@ -20,7 +20,7 @@ public interface IWorld
     public bool TryGetChunkAt(int x, int y, out IChunk? chunk);
     public bool TryGetChunkAt(Vector2<int> position, out IChunk? chunk);
 
-    public Task WaitForLoad(); 
+    public Task WaitForLoad();
 
     public static Vector2<int> ToChunkPosition(float x, float y) =>
         new((int)Math.Floor(x / CHUNK_SIZE), (int)Math.Floor(y / CHUNK_SIZE));
