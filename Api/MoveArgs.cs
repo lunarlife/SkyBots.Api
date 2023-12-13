@@ -1,4 +1,4 @@
-using SkyBots.Api.Math;
+using SkyBots.Api.Mathematics;
 
 namespace SkyBots.Api;
 

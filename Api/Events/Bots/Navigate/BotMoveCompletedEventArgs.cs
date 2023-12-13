@@ -10,12 +10,12 @@ public class BotMoveCompletedEventArgs : ITaskCompletedEventArgs
     public BotMoveResult Result { get; }
     public IEntity Bot { get; }
 
-    public SkyTask Task { get; }
-
     public BotMoveCompletedEventArgs(BotMoveResult result, IEntity bot, SkyTask task)
     {
         Result = result;
         Bot = bot;
         Task = task;
     }
+
+    public SkyTask Task { get; }
 }

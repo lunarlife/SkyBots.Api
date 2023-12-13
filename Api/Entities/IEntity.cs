@@ -7,6 +7,7 @@ public interface IEntity
 {
     public EntityType Type { get; }
     public EntityId Id { get; }
+    public string Name { get; }
 
     public Transform Transform { get; }
 

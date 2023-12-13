@@ -6,5 +6,4 @@ namespace SkyBots.Api.Events.Tasks;
 public interface ITaskEventArgs : IEventArgs
 {
     public SkyTask Task { get; }
-
 }

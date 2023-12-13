@@ -7,14 +7,10 @@ public enum AuthResult : sbyte
     IslandNotFound,
     VersionError,
     Successfully,
-    
+
     //CLIENT
     ServerNotFound,
     ServerNotAnswer,
     InvalidToken,
     InternalError
-    
-    
-
-    
 }

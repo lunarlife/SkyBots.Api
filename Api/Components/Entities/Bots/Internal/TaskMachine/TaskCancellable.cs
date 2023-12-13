@@ -5,6 +5,6 @@ namespace SkyBots.Api.Components.Entities.Bots.Internal.TaskMachine;
 
 public abstract class TaskCancellable : SkyTask
 {
-    public abstract void Cancel();
     public abstract override IEventAccess<BotMoveCompletedEventArgs> OnComplete { get; }
+    public abstract void Cancel();
 }

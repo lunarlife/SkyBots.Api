@@ -6,7 +6,7 @@ public enum BotMoveResult : sbyte
     CompletedAdvance,
     Completed,
     TargetLost,
-    
+
     //CLIENT
     Cancelled
 }

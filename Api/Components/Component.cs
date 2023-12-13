@@ -4,7 +4,7 @@ namespace SkyBots.Api.Components;
 
 public abstract class Component
 {
-    public IEntity Entity { get; private set; }
+    public IEntity Entity { get; }
 
     public virtual void OnLoad()
     {

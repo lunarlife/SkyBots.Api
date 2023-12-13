@@ -1,5 +1,5 @@
 using SkyBots.Api.Components.Entities;
-using SkyBots.Api.Math;
+using SkyBots.Api.Mathematics;
 
 namespace SkyBots.Api.Events.Bots.Navigate;
 
