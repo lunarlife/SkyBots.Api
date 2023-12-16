@@ -23,7 +23,8 @@ public abstract class Component : IComponentEntry
 
     public Component AddComponent(Type type) => Entity.AddComponent(type);
 
-    public bool TryAddComponent<T>(out T? component) where T : Component, new() => Entity.TryAddComponent(out component);
+    public bool TryAddComponent<T>(out T? component) where T : Component, new() =>
+        Entity.TryAddComponent(out component);
 
     public bool TryAddComponent(Type type, out Component? component) => Entity.TryAddComponent(type, out component);
 
@@ -35,5 +36,4 @@ public abstract class Component : IComponentEntry
     public virtual void OnUnload()
     {
     }
-
 }

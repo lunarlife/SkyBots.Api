@@ -1,4 +1,4 @@
-using SkyBots.Api.Components.Entities.Bots.Internal.TaskMachine;
+using SkyBots.Api.Components.Entities.Bots.TaskMachine;
 using Undefined.Events;
 
 namespace SkyBots.Api.Events.Tasks;

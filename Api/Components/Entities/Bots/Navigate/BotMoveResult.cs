@@ -1,4 +1,4 @@
-namespace SkyBots.Api.Components.Entities.Bots.Internal.Navigate;
+namespace SkyBots.Api.Components.Entities.Bots.Navigate;
 
 public enum BotMoveResult : sbyte
 {
