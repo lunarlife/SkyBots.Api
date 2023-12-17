@@ -20,4 +20,7 @@ public static class Mathe
 
     private static Vector3<T> Clamp<T>(Vector3<T> value, Vector3<T> min, Vector3<T> max) where T : INumber<T> =>
         new(Clamp(value.X, min.X, max.X), Clamp(value.Y, min.Y, max.Y), Clamp(value.Z, min.Z, max.Z));
+
+    public static double ToRadians(double degrees) => 0.017453292519943295d * degrees;
+    public static float ToDegrees(double radians) => (float)(radians * 180d / Math.PI);
 }

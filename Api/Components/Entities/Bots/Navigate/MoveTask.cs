@@ -4,7 +4,7 @@ using Undefined.Events;
 
 namespace SkyBots.Api.Components.Entities.Bots.Navigate;
 
-public abstract class MoveTask : TaskCancellable
+public abstract class MoveTask : SkyTaskCancellable
 {
-    public abstract override IEventAccess<BotMoveCompletedEventArgs> OnCompleted { get; }
+    public abstract override IEventAccess<TaskBotMoveCompletedEventArgs> OnCompleted { get; }
 }

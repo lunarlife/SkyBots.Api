@@ -10,7 +10,12 @@ public static class Preconditions
         if (!Mathe.TryClamp(value, min, max))
             throw new ArgumentOutOfRangeException(arg);
     }
-
+    public static void Range<T>(T value, T max, string? arg = null) where T : INumber<T>
+    {
+        if (!Mathe.TryClamp(value, T.Zero, max))
+            throw new ArgumentOutOfRangeException(arg);
+    }
+ 
     public static void Range<T>(Vector2<T> value, Vector2<T> min, Vector2<T> max, string? arg = null)
         where T : INumber<T>
     {

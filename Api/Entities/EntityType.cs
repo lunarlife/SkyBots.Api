@@ -2,7 +2,9 @@ namespace SkyBots.Api.Entities;
 
 public readonly struct EntityType
 {
-    public static readonly EntityType[] TYPES = new EntityType[ENTITY_TYPES_COUNT];
+    public const int ENTITY_TYPES_COUNT = 126;
+    
+    private static readonly EntityType[] Types = new EntityType[ENTITY_TYPES_COUNT];
     public int Id { get; }
     public string Name { get; }
     public bool IsAlive { get; }
@@ -14,7 +16,7 @@ public readonly struct EntityType
         Name = name;
         IsAlive = isAlive;
         IsSpawnable = isSpawnable;
-        TYPES[id] = this;
+        Types[id] = this;
     }
 
     public EntityType()
@@ -22,6 +24,11 @@ public readonly struct EntityType
         Id = 124; //UNKNOWN
     }
 
+    public static EntityType FromId(int id)
+    {
+        Preconditions.Range(id, ENTITY_TYPES_COUNT - 1);
+        return Types[id];
+    }
     public static bool operator ==(EntityType left, EntityType right) => left.Id == right.Id;
 
     public static bool operator !=(EntityType left, EntityType right) => !(left == right);
@@ -38,7 +45,6 @@ public readonly struct EntityType
     public override int GetHashCode() => Id;
     public override string ToString() => Name;
 
-    public const int ENTITY_TYPES_COUNT = 126;
 
     public static readonly EntityType DROPPED_ITEM = new(0, "dropped_item", false, false);
     public static readonly EntityType EXPERIENCE_ORB = new(1, "experience_orb", false, true);

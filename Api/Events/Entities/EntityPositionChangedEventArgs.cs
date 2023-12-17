@@ -5,10 +5,12 @@ namespace SkyBots.Api.Events.Entities;
 
 public class EntityPositionChangedEventArgs : TransformChangedEventArgs
 {
-    public Vector3<float> PreviousPosition { get; }
+    public Vector3<float> Old { get; }
+    public Vector3<float> New { get; }
 
-    public EntityPositionChangedEventArgs(Vector3<float> previousPosition, Transform component) : base(component)
+    public EntityPositionChangedEventArgs(Transform transform, Vector3<float> old, Vector3<float> @new) : base(transform)
     {
-        PreviousPosition = previousPosition;
+        Old = old;
+        New = @new;
     }
 }

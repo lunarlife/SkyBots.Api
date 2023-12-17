@@ -12,13 +12,12 @@ public struct Vector3<T> : IVector<T> where T : INumber<T>
     public static readonly Vector3<T> DOWN = new(T.Zero, -T.One);
     public static readonly Vector3<T> FORWARD = new(T.Zero, T.Zero, T.One);
     public static readonly Vector3<T> BACKWARD = new(T.Zero, T.Zero, -T.One);
-
-
     public int Dimension => 3;
 
     public T X;
     public T Y;
     public T Z;
+
 
     public Vector3(T x, T y, T z)
     {

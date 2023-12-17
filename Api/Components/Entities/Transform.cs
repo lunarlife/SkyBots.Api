@@ -9,8 +9,7 @@ public abstract class Transform : Component
 {
     public abstract Vector3<float> Position { get; }
     public abstract bool IsOnGround { get; }
-    public abstract float Yaw { get; }
-    public abstract float Pitch { get; }
+    public abstract View View { get; }
     public abstract IWorld World { get; }
     public abstract IEventAccess<EntityPositionChangedEventArgs> OnPositionChanged { get; }
     public abstract IEventAccess<EntityViewChangedEventArgs> OnViewChanged { get; }

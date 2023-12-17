@@ -1,4 +1,4 @@
-namespace SkyBots.Api.Components.Entities.World;
+namespace SkyBots.Api.Worlds;
 
 public enum BlockChangeResult : sbyte
 {
@@ -9,7 +9,5 @@ public enum BlockChangeResult : sbyte
     TypeIsNotBlock,
     NotPlaceInBlock,
     Successfully,
-
-    //CLIENT
-    Cancelled
+    Cancelled,
 }

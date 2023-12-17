@@ -7,4 +7,7 @@ public abstract class SkyTask
 {
     public abstract bool IsCompleted { get; }
     public abstract IEventAccess<ITaskCompletedEventArgs> OnCompleted { get; }
+
+    public abstract Task WaitAsync();
+    public abstract void Wait();
 }

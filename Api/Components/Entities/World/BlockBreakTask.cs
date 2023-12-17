@@ -4,7 +4,7 @@ using Undefined.Events;
 
 namespace SkyBots.Api.Components.Entities.World;
 
-public abstract class BlockBreakTask : TaskCancellable
+public abstract class BlockBreakTask : SkyTaskCancellable
 {
     public abstract override IEventAccess<BlockChangeCompletedEventArgs> OnCompleted { get; }
 }

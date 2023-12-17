@@ -4,7 +4,7 @@ namespace SkyBots.Api.Events.Entities;
 
 public class EntityIsOnGroundChangedEventArgs : TransformChangedEventArgs
 {
-    public EntityIsOnGroundChangedEventArgs(Transform component) : base(component)
+    public EntityIsOnGroundChangedEventArgs(Transform transform) : base(transform)
     {
     }
 }

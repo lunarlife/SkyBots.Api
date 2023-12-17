@@ -1,9 +1,8 @@
 using SkyBots.Api.Components.Entities.Bots.TaskMachine;
-using SkyBots.Api.Components.Entities.World;
 using SkyBots.Api.Events.Tasks;
 using SkyBots.Api.Worlds;
 
-namespace SkyBots.Api.Events.World;
+namespace SkyBots.Api.Components.Entities.World;
 
 public class BlockChangeCompletedEventArgs : ITaskCompletedEventArgs
 {
