@@ -23,13 +23,13 @@ public interface IWorld
     public Task WaitForLoad();
 
     public static Vector2<int> ToChunkPosition(float x, float y) =>
-        new((int)Math.Floor(x / CHUNK_SIZE), (int)Math.Floor(y / CHUNK_SIZE));
+        new((int)Math.Floor((x+8) / CHUNK_SIZE), (int)Math.Floor((y+8) / CHUNK_SIZE));
 
     public static Vector2<int> ToChunkPosition(Vector3<float> position) =>
         ToChunkPosition(position.X, position.Y);
 
     public static Vector2<int> ToChunkBlockPosition(float x, float y) =>
-        new((int)Math.Floor(x % CHUNK_SIZE), (int)Math.Floor(y % CHUNK_SIZE));
+        new((int)Math.Floor((x) % CHUNK_SIZE), (int)Math.Floor((y) % CHUNK_SIZE));
 
     public static Vector2<int> ToChunkBlockPosition(Vector2<float> position) =>
         ToChunkBlockPosition(position.X, position.Y);
