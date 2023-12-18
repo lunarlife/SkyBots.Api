@@ -29,4 +29,10 @@ public static class Preconditions
         if (!Mathe.TryClamp(value, min, max))
             throw new ArgumentOutOfRangeException(arg);
     }
+
+    public static void Argument(bool value, string? message = null)
+    {
+        if (!value)
+            throw new ArgumentException(message);
+    }
 }

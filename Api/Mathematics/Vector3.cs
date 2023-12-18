@@ -29,7 +29,6 @@ public struct Vector3<T> : IVector<T> where T : INumber<T>
     public Vector3(T x, T y) : this(x, y, T.Zero)
     {
     }
-
     public Vector3(Vector3<T> vec, T z) : this(vec.X, vec.Y, z)
     {
     }
@@ -46,6 +45,11 @@ public struct Vector3<T> : IVector<T> where T : INumber<T>
     {
     }
 
+    public Vector3<T1> Cast<T1>() where T1 : INumber<T1>
+    {
+        var type = typeof(T1);
+        return new Vector3<T1>((T1)Convert.ChangeType(X, type), (T1)Convert.ChangeType(Y, type), (T1)Convert.ChangeType(Z, type));
+    }
     public T[] AsArray() => new[] { X, Y, Z };
 
     public T Length() =>
