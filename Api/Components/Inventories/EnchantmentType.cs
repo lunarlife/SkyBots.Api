@@ -1,12 +1,14 @@
-namespace SkyBots.Api.Inventories;
+namespace SkyBots.Api.Components.Inventories;
 
-public struct EnchantmentType
+public readonly struct EnchantmentType
 {
     public const int ENCHANTMENTS_COUNT = 38;
     private static readonly EnchantmentType[] Enchantments = new EnchantmentType[ENCHANTMENTS_COUNT];
-    public string Name { get; }
-    public int Id { get; }
-    public int MaxLevel { get; }
+
+
+    public readonly string Name;
+    public readonly int Id;
+    public readonly int MaxLevel;
 
     public EnchantmentType(string name, int id, int maxLevel)
     {
@@ -15,6 +17,19 @@ public struct EnchantmentType
         MaxLevel = maxLevel;
         Enchantments[id] = this;
     }
+
+    public static EnchantmentType FromId(int id)
+    {
+        Preconditions.RangeArray(id, ENCHANTMENTS_COUNT);
+        return Enchantments[id];
+    }
+
+    public static bool operator ==(EnchantmentType left, EnchantmentType right) => left.Id == right.Id;
+    public static bool operator !=(EnchantmentType left, EnchantmentType right) => !(left == right);
+
+    public bool Equals(EnchantmentType other) => Id == other.Id;
+    public override bool Equals(object? obj) => obj is EnchantmentType other && Equals(other);
+    public override int GetHashCode() => Id;
 
     public static readonly EnchantmentType PROTECTION_FIRE = new("fire_protection", 0, 4);
     public static readonly EnchantmentType DAMAGE_ALL = new("sharpness", 1, 5);

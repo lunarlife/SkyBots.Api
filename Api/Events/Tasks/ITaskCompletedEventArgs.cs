@@ -1,5 +1,3 @@
 namespace SkyBots.Api.Events.Tasks;
 
-public interface ITaskCompletedEventArgs : ITaskEventArgs
-{
-}
+public interface ITaskCompletedEventArgs : ITaskEventArgs;

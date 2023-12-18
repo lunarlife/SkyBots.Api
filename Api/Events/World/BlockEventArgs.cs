@@ -8,7 +8,7 @@ public abstract class BlockEventArgs : BotEventArgs
 {
     public Block Block { get; }
 
-    public BlockEventArgs(BotComponent bot, Block block) : base(bot)
+    public BlockEventArgs(Bot bot, Block block) : base(bot)
     {
         Block = block;
     }

@@ -6,6 +6,5 @@ public class EntityDeadEventArgs : EntityEventArgs
 {
     public EntityDeadEventArgs(IEntity entity) : base(entity)
     {
-        
     }
 }

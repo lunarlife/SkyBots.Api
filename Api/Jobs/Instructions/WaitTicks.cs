@@ -9,6 +9,7 @@ public class WaitTicks : IInstruction
         Preconditions.Argument(count > 0, "Count of frames must be greater than 0.");
         _count = count;
     }
+
     public bool IsReady()
     {
         if (_count <= 0) return true;

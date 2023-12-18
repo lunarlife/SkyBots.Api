@@ -6,6 +6,7 @@ public static class Time
 {
     public static float DeltaTime => SkyBotsBase.Implementation.ProgramLoop.DeltaTime;
     public static float FixedDeltaTime => SkyBotsBase.Implementation.ProgramLoop.FixedDeltaTime;
+
     public static int TargetTickRate
     {
         get => SkyBotsBase.Implementation.ProgramLoop.TargetTickRate;

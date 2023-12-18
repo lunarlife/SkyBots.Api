@@ -35,11 +35,13 @@ public struct Vector2<T> : IVector<T> where T : INumber<T>
         var length = Length();
         return new Vector2<T>(X / length, Y / length);
     }
+
     public Vector2<T1> Cast<T1>() where T1 : INumber<T1>
     {
-        var type = typeof(T1); 
+        var type = typeof(T1);
         return new Vector2<T1>((T1)Convert.ChangeType(X, type), (T1)Convert.ChangeType(Y, type));
     }
+
     public bool Equals(Vector2<T> other) => EqualityComparer<T>.Default.Equals(X, other.X) &&
                                             EqualityComparer<T>.Default.Equals(Y, other.Y);
 

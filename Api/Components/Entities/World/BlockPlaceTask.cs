@@ -1,10 +1,9 @@
-using SkyBots.Api.Components.Entities.Bots.TaskMachine;
-using SkyBots.Api.Events.World;
+using SkyBots.Api.Components.Entities.World.Events;
 using Undefined.Events;
 
 namespace SkyBots.Api.Components.Entities.World;
 
-public abstract class BlockPlaceTask : SkyTask
+public abstract class BlockPlaceTask : BlockChangeTask
 {
-    public abstract override IEventAccess<BlockChangeCompletedEventArgs> OnCompleted { get; }
+    public abstract override IEventAccess<BlockPlaceCompletedEventArgs> OnCompleted { get; }
 }

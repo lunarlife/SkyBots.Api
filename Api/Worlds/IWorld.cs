@@ -28,14 +28,14 @@ public interface IWorld
         new((int)Math.Floor((x + 8) / CHUNK_SIZE), (int)Math.Floor((z + 8) / CHUNK_SIZE));
 
     public static Vector2<int> ToChunkPosition(Vector2<float> position) =>
-        ToChunkPosition(position.X, position.Y); 
+        ToChunkPosition(position.X, position.Y);
 
 
     public static Vector2<int> ToChunkBlockPosition(float x, float z) =>
-        new((int)Math.Floor((x) % CHUNK_SIZE), (int)Math.Floor((z) % CHUNK_SIZE));
+        new((int)Math.Floor(x % CHUNK_SIZE), (int)Math.Floor(z % CHUNK_SIZE));
 
     public static Vector3<int> ToChunkBlockPosition(float x, float y, float z) =>
-        new((int)Math.Floor((x) % CHUNK_SIZE), (int)y, (int)Math.Floor((z) % CHUNK_SIZE));
+        new((int)Math.Floor(x % CHUNK_SIZE), (int)y, (int)Math.Floor(z % CHUNK_SIZE));
 
     public static Vector2<int> ToChunkBlockPosition(Vector2<float> position) =>
         ToChunkBlockPosition(position.X, position.Y);

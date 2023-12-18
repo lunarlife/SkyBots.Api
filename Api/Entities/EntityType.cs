@@ -3,12 +3,13 @@ namespace SkyBots.Api.Entities;
 public readonly struct EntityType
 {
     public const int ENTITY_TYPES_COUNT = 126;
-    
+
     private static readonly EntityType[] Types = new EntityType[ENTITY_TYPES_COUNT];
-    public int Id { get; }
-    public string Name { get; }
-    public bool IsAlive { get; }
-    public bool IsSpawnable { get; }
+
+    public readonly int Id;
+    public readonly string Name;
+    public readonly bool IsAlive;
+    public readonly bool IsSpawnable;
 
     private EntityType(int id, string name, bool isAlive, bool isSpawnable)
     {
@@ -29,6 +30,7 @@ public readonly struct EntityType
         Preconditions.Range(id, ENTITY_TYPES_COUNT - 1);
         return Types[id];
     }
+
     public static bool operator ==(EntityType left, EntityType right) => left.Id == right.Id;
 
     public static bool operator !=(EntityType left, EntityType right) => !(left == right);

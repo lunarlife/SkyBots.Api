@@ -31,9 +31,7 @@ public readonly struct View
         var x = vector.X;
         var z = vector.Z;
         if (x == 0.0 && z == 0.0)
-        {
             pitch = vector.Y > 0.0 ? -90 : 90;
-        }
         else
         {
             var theta = (float)Math.Atan2(-x, z);

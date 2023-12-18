@@ -10,4 +10,7 @@ public enum BlockChangeResult : sbyte
     NotPlaceInBlock,
     Successfully,
     Cancelled,
+    Continue,
+    ItemNotUsable,
+    NotUseItemToBlock
 }

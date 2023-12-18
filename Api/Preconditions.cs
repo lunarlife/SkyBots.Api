@@ -10,12 +10,25 @@ public static class Preconditions
         if (!Mathe.TryClamp(value, min, max))
             throw new ArgumentOutOfRangeException(arg);
     }
+
     public static void Range<T>(T value, T max, string? arg = null) where T : INumber<T>
     {
         if (!Mathe.TryClamp(value, T.Zero, max))
             throw new ArgumentOutOfRangeException(arg);
     }
- 
+
+    public static void RangeArray<T>(T value, T max, string? arg = null) where T : INumber<T>
+    {
+        if (!Mathe.TryClamp(value, T.Zero, max - T.One))
+            throw new ArgumentOutOfRangeException(arg);
+    }
+
+    public static void Min<T>(T value, T min, string? arg = null) where T : INumber<T>
+    {
+        if (value < min)
+            throw new ArgumentOutOfRangeException(arg ?? $"Value cant be less than {min}.");
+    }
+
     public static void Range<T>(Vector2<T> value, Vector2<T> min, Vector2<T> max, string? arg = null)
         where T : INumber<T>
     {

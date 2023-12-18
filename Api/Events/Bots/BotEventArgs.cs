@@ -5,8 +5,9 @@ namespace SkyBots.Api.Events.Bots;
 
 public abstract class BotEventArgs : IEventArgs
 {
-    public BotComponent Bot { get; }
-    public BotEventArgs(BotComponent bot)
+    public Bot Bot { get; }
+
+    public BotEventArgs(Bot bot)
     {
         Bot = bot;
     }

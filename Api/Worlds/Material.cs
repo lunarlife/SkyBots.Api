@@ -1,4 +1,4 @@
-namespace SkyBots.Api.Inventories;
+namespace SkyBots.Api.Worlds;
 
 public readonly struct Material
 {
@@ -6,20 +6,20 @@ public readonly struct Material
 
     private static readonly Material[] Materials = new Material[MATERIALS_COUNT];
 
-    public int Id { get; }
-    public bool IsBlock { get; }
-    public bool IsBurnable { get; }
-    public bool IsFuel { get; }
-    public bool IsItem { get; }
-    public bool IsAir { get; }
-    public bool IsFlammable { get; }
-    public bool IsOccluding { get; }
-    public bool IsSolid { get; }
-    public bool IsRecord { get; }
-    public bool IsInteractable { get; }
-    public int MaxStackSize { get; }
-    public float BlastResistance { get; }
-    public string Name { get; }
+    public readonly int Id;
+    public readonly bool IsBlock;
+    public readonly bool IsBurnable;
+    public readonly bool IsFuel;
+    public readonly bool IsItem;
+    public readonly bool IsAir;
+    public readonly bool IsFlammable;
+    public readonly bool IsOccluding;
+    public readonly bool IsSolid;
+    public readonly bool IsRecord;
+    public readonly bool IsInteractable;
+    public readonly int MaxStackSize;
+    public readonly float BlastResistance;
+    public readonly string Name;
 
     private Material(int id, string name, bool isBlock, bool isBurnable, bool isFuel, bool isItem, bool isAir,
         bool isFlammable, bool isOccluding, bool isSolid, bool isRecord, bool isInteractable,
@@ -29,7 +29,7 @@ public readonly struct Material
         Name = name;
         IsBlock = isBlock;
         IsBurnable = isBurnable;
-        IsFuel = isFuel;
+        IsFuel = isFuel; 
         IsItem = isItem;
         IsAir = isAir;
         IsFlammable = isFlammable;
@@ -42,6 +42,19 @@ public readonly struct Material
         Materials[id] = this;
     }
 
+    public Material() : this(0, "air", true, false, false, true, true, false, false, false, false,
+        false, 0, 0.0f)
+    {
+        
+    }
+    public static bool operator ==(Material left, Material right) => left.Id == right.Id;
+
+    public static bool operator !=(Material left, Material right) => !(left == right);
+    public bool Equals(Material other) => Id == other.Id;
+
+    public override bool Equals(object? obj) => obj is Material other && Equals(other);
+
+    public override int GetHashCode() => Id;
     public override string ToString() => Name;
 
     public static Material FromId(int id) => Materials[id];

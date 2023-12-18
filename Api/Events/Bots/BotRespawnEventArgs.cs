@@ -4,7 +4,7 @@ namespace SkyBots.Api.Events.Bots;
 
 public class BotRespawnEventArgs : BotEventArgs
 {
-    public BotRespawnEventArgs(BotComponent bot) : base(bot)
+    public BotRespawnEventArgs(Bot bot) : base(bot)
     {
     }
 }
