@@ -49,9 +49,10 @@ public struct ItemStack
     public bool HasSpace(ItemStack stack, out int rest)
     {
         rest = 0;
-        if (stack.IsEmpty || IsEmpty) return false;
-        if (stack._material != _material) return false;
-        if (!_material.IsStackable) return false;
+        if (stack.IsEmpty) return false;
+        
+        if (!IsEmpty && stack._material != _material) return false;
+        if (!stack._material.IsStackable && !IsEmpty) return false;
         rest = Mathe.Clamp(stack._count + _count - STACK_SIZE, 0, STACK_SIZE);
         return rest == 0;
     }
