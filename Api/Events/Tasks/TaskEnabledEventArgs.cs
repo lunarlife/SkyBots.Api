@@ -1,12 +1,14 @@
 using SkyBots.Api.Components.Entities.Bots.TaskMachine;
+using Undefined.Events;
 
 namespace SkyBots.Api.Events.Tasks;
 
-public class TaskEnabledEventArgs : ITaskEventArgs
+public class TaskEnabledEventArgs : IEventArgs
 {
-    public SkyTask Task { get; }
+    public ISkyTask Task { get; }
 
-    public TaskEnabledEventArgs(SkyTask task)
+
+    public TaskEnabledEventArgs(ISkyTask task)
     {
         Task = task;
     }

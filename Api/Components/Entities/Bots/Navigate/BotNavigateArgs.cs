@@ -1,10 +1,10 @@
 using SkyBots.Api.Mathematics;
 
-namespace SkyBots.Api;
+namespace SkyBots.Api.Components.Entities.Bots.Navigate;
 
-public struct MoveArgs
+public struct BotNavigateArgs
 {
-    public MoveArgs()
+    public BotNavigateArgs()
     {
         Target = default;
         Sprint = false;
@@ -12,5 +12,4 @@ public struct MoveArgs
 
     public Vector3<float> Target { get; init; }
     public bool Sprint { get; init; }
-    public int MaxFallDistance { get; init; } = 3;
 }

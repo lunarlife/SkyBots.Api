@@ -17,4 +17,8 @@ public struct Block
         Type = type;
         Data = data;
     }
+
+    public Block() : this(App.World, Vector3<int>.ZERO, Material.AIR, null)
+    {
+    }
 }

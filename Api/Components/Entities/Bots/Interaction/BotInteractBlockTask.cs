@@ -1,9 +1,8 @@
-using SkyBots.Api.Components.Entities.Bots.Interaction.Events;
-using Undefined.Events;
+using SkyBots.Api.Components.Entities.Bots.TaskMachine;
 
 namespace SkyBots.Api.Components.Entities.Bots.Interaction;
 
-public abstract class BotInteractBlockTask : BotInteractTask
+public interface IBotInteractBlockTask : IBotWorldInteractionTask, ISkyTask<IBotInteractBlockTask>
 {
-    public abstract override IEventAccess<BotBlockInteractCompletedEventArgs> OnCompleted { get; }
+    public BlockInteractResult Result { get; }
 }

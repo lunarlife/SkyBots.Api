@@ -19,6 +19,7 @@ public readonly struct Material
     public readonly bool IsInteractable;
     public readonly int MaxStackSize;
     public readonly float BlastResistance;
+    public readonly bool IsStackable;
     public readonly string Name;
 
     private Material(int id, string name, bool isBlock, bool isBurnable, bool isFuel, bool isItem, bool isAir,
@@ -39,6 +40,7 @@ public readonly struct Material
         IsInteractable = isInteractable;
         MaxStackSize = maxStackSize;
         BlastResistance = blastResistance;
+        IsStackable = maxStackSize > 1;
         Materials[id] = this;
     }
 
