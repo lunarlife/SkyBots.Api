@@ -16,7 +16,9 @@ public sealed class WaitMs : IInstruction
     {
         _time += Time.DeltaTime;
         var ready = _time >= _ms / 1000d;
-        if (ready) _time = 0;
+        if (ready) Reset();;
         return ready;
     }
+
+    public void Reset() => _time = 0;
 }

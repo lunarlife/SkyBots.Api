@@ -10,6 +10,10 @@ public class WaitTask : IInstruction
     {
         _task = task;
     }
-    
+
     public bool IsReady() => _task.IsCompleted;
+
+    public void Reset()
+    {
+    }
 }

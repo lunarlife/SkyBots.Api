@@ -9,6 +9,7 @@ public struct ItemStack
     private readonly Enchantment[] _enchantments = [];
     private int _count;
     private Material _material;
+    public bool IsEmpty => Material == Material.AIR;
 
     public Material Material
     {
@@ -55,6 +56,14 @@ public struct ItemStack
         return rest == 0;
     }
 
-    public bool IsEmpty => Material == Material.AIR;
+    public static bool operator ==(ItemStack left, ItemStack right) =>
+        left._material == right._material && left._count == right._count;
+
+    public static bool operator !=(ItemStack left, ItemStack right) => !(left == right);
+    public bool Equals(ItemStack other) => _count == other._count && _material.Equals(other._material);
+
+    public override bool Equals(object? obj) => obj is ItemStack other && Equals(other);
+
+    public override int GetHashCode() => HashCode.Combine(_count, _material);
     public override string ToString() => $"{Material}:{Count}";
 }

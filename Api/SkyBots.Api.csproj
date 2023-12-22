@@ -10,10 +10,6 @@
         <PackageReference Include="Undefined.Events" Version="1.0.2" />
     </ItemGroup>
 
-    <ItemGroup>
-        <Folder Include="Events\Bots\Navigate\"/>
-    </ItemGroup>
-
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <Exec Command="xcopy /y /d  &quot;$(ProjectDir)$(OutDir)\SkyBots.Api.dll&quot; &quot;C:\Frameworks&quot;"/>
     </Target>

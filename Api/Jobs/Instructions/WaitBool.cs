@@ -8,6 +8,10 @@ public class WaitBool : IInstruction
     {
         _func = func;
     }
-    
+
     public bool IsReady() => _func();
+
+    public void Reset()
+    {
+    }
 }
