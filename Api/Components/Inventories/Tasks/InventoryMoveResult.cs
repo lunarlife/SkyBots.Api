@@ -1,6 +1,6 @@
 namespace SkyBots.Api.Components.Inventories.Tasks;
 
-public enum InventoryMoveResult
+public enum InventoryMoveResult : sbyte
 {
     Invalid,
     CountOutOfRange,
