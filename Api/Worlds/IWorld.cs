@@ -32,10 +32,10 @@ public interface IWorld
 
 
     public static Vector2<int> ToChunkBlockPosition(float x, float z) =>
-        new((int)Math.Floor(x % CHUNK_SIZE), (int)Math.Floor(z % CHUNK_SIZE));
+        new((int)Math.Floor(x) & 15, (int)Math.Floor(z) & 15);
 
     public static Vector3<int> ToChunkBlockPosition(float x, float y, float z) =>
-        new((int)Math.Floor(x % CHUNK_SIZE), (int)y, (int)Math.Floor(z % CHUNK_SIZE));
+        new((int)Math.Floor(x) & 15, (int)y, (int)Math.Floor(z) & 15);
 
     public static Vector2<int> ToChunkBlockPosition(Vector2<float> position) =>
         ToChunkBlockPosition(position.X, position.Y);
