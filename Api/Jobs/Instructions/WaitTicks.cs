@@ -1,8 +1,8 @@
 namespace SkyBots.Api.Jobs.Instructions;
 
-public class WaitTicks : IInstruction
+public class WaitTicks : Instruction
 {
-    private int _ticksCount;
+    private readonly int _ticksCount;
     private int _remain;
 
     public WaitTicks(int count = 1)
@@ -11,7 +11,7 @@ public class WaitTicks : IInstruction
         _ticksCount = count;
     }
 
-    public bool IsReady()
+    protected override bool CheckReady()
     {
         if (_remain >= _ticksCount)
         {
@@ -22,7 +22,12 @@ public class WaitTicks : IInstruction
         return false;
     }
 
-    public void Reset()
+    protected override void OnCancelled()
+    {
+        
+    }
+
+    protected override void OnReset()
     {
         _remain = 0;
     }

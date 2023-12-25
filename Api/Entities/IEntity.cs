@@ -11,4 +11,5 @@ public interface IEntity : IComponentEntry
     public EntityId Id { get; }
     public string Name { get; }
     public AliveStatus AliveStatus { get; }
+    public bool IsAlive => AliveStatus == AliveStatus.Alive;
 }

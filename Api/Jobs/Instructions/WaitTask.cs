@@ -2,7 +2,7 @@ using SkyBots.Api.Components.Entities.Bots.TaskMachine;
 
 namespace SkyBots.Api.Jobs.Instructions;
 
-public class WaitTask : IInstruction
+public class WaitTask : Instruction
 {
     private readonly ISkyTask _task;
 
@@ -11,9 +11,15 @@ public class WaitTask : IInstruction
         _task = task;
     }
 
-    public bool IsReady() => _task.IsCompleted;
+    protected override bool CheckReady() => _task.IsCompleted;
 
-    public void Reset()
+    protected override void OnCancelled()
+    {
+        if(_task is ISkyTaskCancellable cancellable) cancellable.Cancel();
+        
+    }
+
+    protected override void OnReset()
     {
     }
 }

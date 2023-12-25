@@ -3,6 +3,7 @@ using SkyBots.Api.Components.Entities.Bots.Interaction;
 using SkyBots.Api.Components.Entities.Bots.Respawn;
 using SkyBots.Api.Components.Entities.World;
 using SkyBots.Api.Components.Inventories;
+using SkyBots.Api.Entities;
 using SkyBots.Api.Events.Bots;
 using SkyBots.Api.Events.Inventories;
 using SkyBots.Api.Events.World;
@@ -22,6 +23,7 @@ public abstract class Bot : Component, IInventoryHolder<IBotInventory>
     public abstract IEventAccess<BlockPlaceEventArgs> OnPlaceBlock { get; }
     public abstract IEventAccess<InventoryOpenEventArgs> OnInventoryOpen { get; }
     public abstract IEventAccess<InventoryCloseEventArgs> OnInventoryClose { get; }
+    public bool IsAlive => Entity.AliveStatus == AliveStatus.Alive;
     public abstract int Level { get; }
     public abstract float Health { get; }
     public abstract float Food { get; }

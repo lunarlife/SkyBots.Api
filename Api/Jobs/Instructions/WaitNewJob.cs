@@ -1,16 +1,16 @@
 namespace SkyBots.Api.Jobs.Instructions;
 
-public class WaitNewJob : IInstruction
+public class WaitNewJob : Instruction
 {
     private readonly IEnumerable<IInstruction?> _instructions;
     private IEnumerator<IInstruction?>? _enumerator;
-
+    
     public WaitNewJob(IEnumerable<IInstruction?> instructions)
     {
         _instructions = instructions;
     }
 
-    public bool IsReady()
+    protected override bool CheckReady()
     {
         _enumerator ??= _instructions.GetEnumerator();
         if (_enumerator.Current is { } instruction)
@@ -31,7 +31,12 @@ public class WaitNewJob : IInstruction
         return false;
     }
 
-    public void Reset()
+    protected override void OnCancelled()
+    {
+        _enumerator?.Current?.Cancel();
+    }
+
+    protected override void OnReset()
     {
         _enumerator = _instructions.GetEnumerator();
     }

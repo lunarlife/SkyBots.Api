@@ -2,7 +2,7 @@ using SkyBots.Api.Core;
 
 namespace SkyBots.Api.Jobs.Instructions;
 
-public sealed class WaitMs : IInstruction
+public sealed class WaitMs : Instruction
 {
     private readonly float _ms;
     private double _time;
@@ -12,13 +12,16 @@ public sealed class WaitMs : IInstruction
         _ms = ms;
     }
 
-    public bool IsReady()
+    protected override bool CheckReady()
     {
         _time += Time.DeltaTime;
         var ready = _time >= _ms / 1000d;
-        if (ready) Reset();;
         return ready;
     }
 
-    public void Reset() => _time = 0;
+    protected override void OnCancelled()
+    {
+    }
+
+    protected override void OnReset() => _time = 0;
 }

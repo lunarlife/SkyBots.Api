@@ -1,6 +1,6 @@
 namespace SkyBots.Api.Jobs.Instructions;
 
-public class WaitBool : IInstruction
+public class WaitBool : Instruction
 {
     private readonly Func<bool> _func;
 
@@ -9,9 +9,14 @@ public class WaitBool : IInstruction
         _func = func;
     }
 
-    public bool IsReady() => _func();
+    protected override bool CheckReady() => _func();
 
-    public void Reset()
+    protected override void OnCancelled()
     {
     }
+
+    protected override void OnReset()
+    {
+    }
+
 }
