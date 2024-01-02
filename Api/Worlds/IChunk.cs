@@ -13,12 +13,10 @@ public interface IChunk
     public bool TryGetBlockAt(Vector3<int> position, out IBlock? block);
     public bool TryGetBlockAt(int x, int y, int z, out IBlock? block);
 
-    public bool FindAir(Cube<int> area, out IBlock? block);
-    public bool FindAir(out IBlock? block);
 
     public bool FindBlock(Material type, out IBlock? block);
-    public bool FindBlock(Predicate<IBlock> predicate, out IBlock? block);
+    public bool FindBlock(Predicate<IBlock> predicate, out IBlock? block, bool cutEmptyAreas = true);
 
     public bool FindBlock(Cube<int> area, Material type, out IBlock? block);
-    public bool FindBlock(Cube<int> area, Predicate<IBlock> predicate, out IBlock? block);
+    public bool FindBlock(Cube<int> area, Predicate<IBlock> predicate, out IBlock? block, bool cutEmptyAreas = true);
 }

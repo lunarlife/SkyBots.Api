@@ -23,4 +23,19 @@ public static class Mathe
 
     public static double ToRadians(double degrees) => 0.017453292519943295d * degrees;
     public static float ToDegrees(double radians) => (float)(radians * 180d / Math.PI);
+
+    public static T Min<T>(T value1, T value2) where T : INumber<T> => value1 < value2 ? value1 : value2;
+    public static T Max<T>(T value1, T value2) where T : INumber<T> => value1 > value2 ? value1 : value2;
+
+    public static Vector2<T> Min<T>(Vector2<T> value, Vector2<T> value2) where T : INumber<T> =>
+        new(Min(value.X, value2.X), Min(value.Y, value2.Y));
+
+    public static Vector3<T> Min<T>(Vector3<T> value, Vector3<T> value2) where T : INumber<T> =>
+        new(Min(value.X, value2.X), Min(value.Y, value2.Y), Min(value.Z, value2.Z));
+
+    public static Vector2<T> Max<T>(Vector2<T> value, Vector2<T> value2) where T : INumber<T> =>
+        new(Max(value.X, value2.X), Max(value.Y, value2.Y));
+
+    public static Vector3<T> Max<T>(Vector3<T> value, Vector3<T> value2) where T : INumber<T> =>
+        new(Max(value.X, value2.X), Max(value.Y, value2.Y), Max(value.Z, value2.Z));
 }
