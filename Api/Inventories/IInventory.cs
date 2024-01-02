@@ -2,9 +2,9 @@ using SkyBots.Api.Components.Entities.Bots;
 using SkyBots.Api.Events.Inventories.SlotChange;
 using Undefined.Events;
 
-namespace SkyBots.Api.Components.Inventories;
+namespace SkyBots.Api.Inventories;
 
-public interface IInventory : IEnumerable<ItemStack>
+public interface IInventory
 {
     public IEventAccess<InventorySlotChangeEventArgs> OnSlotChange { get; }
     public int Size { get; }

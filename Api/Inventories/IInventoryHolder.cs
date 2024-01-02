@@ -1,4 +1,4 @@
-namespace SkyBots.Api.Components.Inventories;
+namespace SkyBots.Api.Inventories;
 
 public interface IInventoryHolder
 {

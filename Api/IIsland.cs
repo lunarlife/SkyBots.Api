@@ -8,14 +8,13 @@ public interface IIsland
     public IReadOnlyList<Bot> Bots { get; }
     public IReadOnlyList<Bot> BoundBots { get; }
     public IReadOnlyList<Bot> FreeBots { get; }
-    
+
     public IReadOnlyList<IEntity> Entities { get; }
-    
-    
+
+
     public Bot GetBot(EntityId id);
     public bool TryGetBot(EntityId id, out Bot? bot);
 
     public IEntity GetEntity(EntityId id);
     public bool TryGetEntity(EntityId id, out IEntity? entity);
-    
 }

@@ -12,10 +12,10 @@ public interface IWorld
     public int Size { get; }
     public bool IsLoaded { get; }
     public IEventAccess<WorldBlockChangeEventArgs> OnBlockChange { get; }
-    public Block GetBlockAt(Vector3<int> position);
-    public Block GetBlockAt(int x, int y, int z);
-    public bool TryGetBlockAt(Vector3<int> position, out Block block);
-    public bool TryGetBlockAt(int x, int y, int z, out Block block);
+    public IBlock GetBlockAt(Vector3<int> position);
+    public IBlock GetBlockAt(int x, int y, int z);
+    public bool TryGetBlockAt(Vector3<int> position, out IBlock? block);
+    public bool TryGetBlockAt(int x, int y, int z, out IBlock? block);
 
     public IChunk GetChunkAt(int x, int y);
     public IChunk GetChunkAt(Vector2<int> position);
@@ -24,11 +24,25 @@ public interface IWorld
 
     public Task WaitForLoad();
 
+
+    public bool FindAir(Cube<int> area, out IBlock? block);
+    public bool FindAir(out IBlock? block);
+
+    public bool FindBlock(Material type, out IBlock? block);
+    public bool FindBlock(Predicate<IBlock> predicate, out IBlock? block);
+
+    public bool FindBlock(Cube<int> area, Material type, out IBlock? block);
+    public bool FindBlock(Cube<int> area, Predicate<IBlock> predicate, out IBlock? block);
+
     public static Vector2<int> ToChunkPosition(float x, float z) =>
         new((int)Math.Floor((x + 8) / CHUNK_SIZE), (int)Math.Floor((z + 8) / CHUNK_SIZE));
 
     public static Vector2<int> ToChunkPosition(Vector2<float> position) =>
         ToChunkPosition(position.X, position.Y);
+
+    public Vector3<int> ToWorldPosition(Vector2<int> chunk, Vector3<int> position);
+
+    public Vector3<int> ToWorldPosition(Vector2<int> chunk, int x, int y, int z);
 
 
     public static Vector2<int> ToChunkBlockPosition(float x, float z) =>

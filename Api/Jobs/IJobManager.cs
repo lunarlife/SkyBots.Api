@@ -4,5 +4,5 @@ namespace SkyBots.Api.Jobs;
 
 public interface IJobManager
 {
-    public void ExecuteJob(IEnumerable<IInstruction> job);
+    public IJob ExecuteJob(IEnumerable<IInstruction?> job);
 }

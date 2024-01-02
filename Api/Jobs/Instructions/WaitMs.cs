@@ -12,14 +12,16 @@ public sealed class WaitMs : Instruction
         _ms = ms;
     }
 
-    protected override bool CheckReady()
+    protected override bool IsReady()
     {
         _time += Time.DeltaTime;
         var ready = _time >= _ms / 1000d;
+        if (ready) Reset();
+
         return ready;
     }
 
-    protected override void OnCancelled()
+    protected override void OnCancel()
     {
     }
 

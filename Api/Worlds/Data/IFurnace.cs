@@ -1,4 +1,4 @@
-using SkyBots.Api.Components.Inventories.Blocks;
+using SkyBots.Api.Inventories.Blocks;
 
 namespace SkyBots.Api.Worlds.Data;
 

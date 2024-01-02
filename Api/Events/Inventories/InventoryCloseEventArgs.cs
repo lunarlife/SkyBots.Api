@@ -1,5 +1,5 @@
 using SkyBots.Api.Components.Entities.Bots;
-using SkyBots.Api.Components.Inventories;
+using SkyBots.Api.Inventories;
 
 namespace SkyBots.Api.Events.Inventories;
 

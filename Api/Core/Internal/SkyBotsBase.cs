@@ -1,4 +1,4 @@
-using SkyBots.Api.Components.Inventories;
+using SkyBots.Api.Inventories;
 using SkyBots.Api.Jobs;
 using SkyBots.Api.Worlds;
 
@@ -15,6 +15,7 @@ public abstract class SkyBotsBase
     public abstract bool IsEnabled { get; }
     public abstract IDebug Debug { get; }
     public abstract IWorld World { get; }
+    public abstract IAppFactory Factory { get; }
 
     public SkyBotsBase()
     {

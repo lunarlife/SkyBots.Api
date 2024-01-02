@@ -1,4 +1,4 @@
-using SkyBots.Api.Components.Inventories;
+using SkyBots.Api.Inventories;
 using Undefined.Events;
 
 namespace SkyBots.Api.Events.Inventories;

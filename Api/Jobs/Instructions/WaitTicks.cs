@@ -11,20 +11,16 @@ public class WaitTicks : Instruction
         _ticksCount = count;
     }
 
-    protected override bool CheckReady()
+    protected override bool IsReady()
     {
-        if (_remain >= _ticksCount)
-        {
-            Reset();
-            return true;
-        }
         _remain++;
-        return false;
+        if (_remain < _ticksCount) return false;
+        Reset();
+        return true;
     }
 
-    protected override void OnCancelled()
+    protected override void OnCancel()
     {
-        
     }
 
     protected override void OnReset()

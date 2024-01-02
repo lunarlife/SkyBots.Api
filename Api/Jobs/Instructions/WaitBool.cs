@@ -9,14 +9,13 @@ public class WaitBool : Instruction
         _func = func;
     }
 
-    protected override bool CheckReady() => _func();
+    protected override bool IsReady() => _func();
 
-    protected override void OnCancelled()
+    protected override void OnCancel()
     {
     }
 
     protected override void OnReset()
     {
     }
-
 }

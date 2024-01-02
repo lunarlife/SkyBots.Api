@@ -1,4 +1,4 @@
-namespace SkyBots.Api.Components.Inventories.Tasks;
+namespace SkyBots.Api.Inventories.Tasks;
 
 public enum InventoryMoveResult : sbyte
 {
@@ -10,5 +10,5 @@ public enum InventoryMoveResult : sbyte
     ItemFromIsNull,
     ItemFromIsNotSimilarItemTo,
     ItemToIsFull,
-    Successfully,
+    Successfully
 }

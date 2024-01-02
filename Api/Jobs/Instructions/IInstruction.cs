@@ -2,9 +2,8 @@ namespace SkyBots.Api.Jobs.Instructions;
 
 public interface IInstruction
 {
-    public bool IsCancelled { get; }
-
-    public bool IsReady();
+    public InstructionStatus Status { get; }
+    public bool Update();
     public void Reset();
     public void Cancel();
 }

@@ -9,5 +9,5 @@ public enum UseItemResult
     Successfully = WorldInteractionResult.Successfully,
     Cancelled = WorldInteractionResult.Cancelled,
     ItemNotUsable = WorldInteractionResult.ItemNotUsable,
-    ItemNotUsableForThisBlock = WorldInteractionResult.ItemNotUsableForThisBlock,
+    ItemNotUsableForThisBlock = WorldInteractionResult.ItemNotUsableForThisBlock
 }

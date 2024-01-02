@@ -1,9 +1,8 @@
-namespace SkyBots.Api.Components.Inventories.Enums;
+namespace SkyBots.Api.Inventories.Enums;
 
 public enum FurnaceSlot
 {
     Input,
     Fuel,
     Result
-    
 }

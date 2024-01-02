@@ -11,12 +11,11 @@ public class WaitTask : Instruction
         _task = task;
     }
 
-    protected override bool CheckReady() => _task.IsCompleted;
+    protected override bool IsReady() => _task.IsCompleted;
 
-    protected override void OnCancelled()
+    protected override void OnCancel()
     {
-        if(_task is ISkyTaskCancellable cancellable) cancellable.Cancel();
-        
+        if (!_task.IsCompleted && _task is ISkyTaskCancellable cancellable) cancellable.Cancel();
     }
 
     protected override void OnReset()

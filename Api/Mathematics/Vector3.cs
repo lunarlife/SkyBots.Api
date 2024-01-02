@@ -70,6 +70,9 @@ public struct Vector3<T> : IVector<T> where T : INumber<T>
         return new Vector3<T>(X / length, Y / length, Z / length);
     }
 
+    public Vector3<T> Offset(T x, T y, T z) => new(X + x, Y + y, Z + z);
+    public Vector3<T> Offset(Vector3<T> offset) => Offset(offset.X, offset.Y, offset.Z);
+
     public bool Equals(Vector3<T> other) => EqualityComparer<T>.Default.Equals(X, other.X) &&
                                             EqualityComparer<T>.Default.Equals(Y, other.Y) &&
                                             EqualityComparer<T>.Default.Equals(Z, other.Z);

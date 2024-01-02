@@ -29,6 +29,12 @@ public static class Preconditions
             throw new ArgumentOutOfRangeException(arg ?? $"Value cant be less than {min}.");
     }
 
+    public static void MoreZero<T>(T value, string? arg = null) where T : INumber<T>
+    {
+        if (value < T.Zero)
+            throw new ArgumentOutOfRangeException(arg ?? "Value cant be less than zero.");
+    }
+
     public static void Range<T>(Vector2<T> value, Vector2<T> min, Vector2<T> max, string? arg = null)
         where T : INumber<T>
     {

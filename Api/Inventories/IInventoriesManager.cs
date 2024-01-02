@@ -1,6 +1,6 @@
 using SkyBots.Api.Mathematics;
 
-namespace SkyBots.Api.Components.Inventories;
+namespace SkyBots.Api.Inventories;
 
 public interface IInventoriesManager
 {

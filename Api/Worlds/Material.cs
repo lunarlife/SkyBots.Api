@@ -3,9 +3,9 @@ namespace SkyBots.Api.Worlds;
 public readonly struct Material
 {
     public const int MATERIALS_COUNT = 1402;
+    public static IReadOnlyList<Material> Materials => MaterialsArray.AsReadOnly();
 
-    private static readonly Material[] Materials = new Material[MATERIALS_COUNT];
-
+    private static readonly Material[] MaterialsArray = new Material[MATERIALS_COUNT];
     public readonly int Id;
     public readonly bool IsBlock;
     public readonly bool IsBurnable;
@@ -30,7 +30,7 @@ public readonly struct Material
         Name = name;
         IsBlock = isBlock;
         IsBurnable = isBurnable;
-        IsFuel = isFuel; 
+        IsFuel = isFuel;
         IsItem = isItem;
         IsAir = isAir;
         IsFlammable = isFlammable;
@@ -41,14 +41,14 @@ public readonly struct Material
         MaxStackSize = maxStackSize;
         BlastResistance = blastResistance;
         IsStackable = maxStackSize > 1;
-        Materials[id] = this;
+        MaterialsArray[id] = this;
     }
 
     public Material() : this(0, "air", true, false, false, true, true, false, false, false, false,
         false, 0, 0.0f)
     {
-        
     }
+
     public static bool operator ==(Material left, Material right) => left.Id == right.Id;
 
     public static bool operator !=(Material left, Material right) => !(left == right);
@@ -59,7 +59,7 @@ public readonly struct Material
     public override int GetHashCode() => Id;
     public override string ToString() => Name;
 
-    public static Material FromId(int id) => Materials[id];
+    public static Material FromId(int id) => MaterialsArray[id];
 
     #region POMOIKA
 

@@ -6,9 +6,9 @@ namespace SkyBots.Api.Events.World;
 
 public abstract class BlockEventArgs : BotEventArgs
 {
-    public Block Block { get; }
+    public IBlock Block { get; }
 
-    public BlockEventArgs(Bot bot, Block block) : base(bot)
+    public BlockEventArgs(Bot bot, IBlock block) : base(bot)
     {
         Block = block;
     }

@@ -1,7 +1,6 @@
-using SkyBots.Api.Components.Entities.Bots;
 using SkyBots.Api.Components.Entities.Bots.TaskMachine;
 
-namespace SkyBots.Api.Components.Inventories.Tasks;
+namespace SkyBots.Api.Inventories.Tasks;
 
 public interface IInventoryMoveSlotTask : ISkyTask<IInventoryMoveSlotTask>
 {
@@ -15,5 +14,4 @@ public interface IInventoryMoveSlotTask : ISkyTask<IInventoryMoveSlotTask>
     public ItemStack DestinationOld { get; }
     public ItemStack DestinationNeu { get; }
     public InventoryMoveResult Result { get; }
-    
 }

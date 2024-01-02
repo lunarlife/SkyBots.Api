@@ -10,5 +10,4 @@ public enum BlockPlaceResult
     Cancelled = WorldInteractionResult.Cancelled,
     MaterialIsNotBlock = WorldInteractionResult.MaterialIsNotBlock,
     BlockIsNotEmpty = WorldInteractionResult.BlockIsNotEmpty
-
 }

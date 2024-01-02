@@ -1,20 +1,36 @@
+using SkyBots.Api.Exceptions;
+
 namespace SkyBots.Api.Jobs.Instructions;
 
 public abstract class Instruction : IInstruction
 {
-    public bool IsCancelled { get; private set; }
+    public InstructionStatus Status { get; private set; } = InstructionStatus.Executing;
 
-    public bool IsReady() => IsCancelled || CheckReady();
+    public bool Update()
+    {
+        if (Status == InstructionStatus.NoStatus) Status = InstructionStatus.Executing;
+        if (Status != InstructionStatus.Executing) return true;
+        if (!IsReady()) return false;
+        if (Status == InstructionStatus.Executing)
+            Status = InstructionStatus.Completed;
+        return true;
+    }
 
-    protected abstract bool CheckReady();
 
     public void Reset()
     {
-        IsCancelled = false;
+        Status = InstructionStatus.NoStatus;
         OnReset();
     }
 
-    protected abstract void OnCancelled();
+    public void Cancel()
+    {
+        if (Status != InstructionStatus.Executing) throw new JobException("Job already completed.");
+        Status = InstructionStatus.Cancelled;
+        OnCancel();
+    }
+
+    protected abstract void OnCancel();
     protected abstract void OnReset();
-    public void Cancel() => IsCancelled = true;
+    protected abstract bool IsReady();
 }

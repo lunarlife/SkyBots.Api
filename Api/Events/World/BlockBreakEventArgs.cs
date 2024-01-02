@@ -5,9 +5,9 @@ namespace SkyBots.Api.Events.World;
 
 public class BlockBreakEventArgs : BlockEventArgs
 {
-    public Block Old { get; }
+    public IBlock Old { get; }
 
-    public BlockBreakEventArgs(Bot bot, Block old, Block @new) : base(bot, @new)
+    public BlockBreakEventArgs(Bot bot, IBlock old, IBlock @new) : base(bot, @new)
     {
         Old = old;
     }

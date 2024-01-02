@@ -42,6 +42,10 @@ public struct Vector2<T> : IVector<T> where T : INumber<T>
         return new Vector2<T1>((T1)Convert.ChangeType(X, type), (T1)Convert.ChangeType(Y, type));
     }
 
+    public Vector2<T> Offset(T x, T y) => new(X + x, Y + y);
+    public Vector2<T> Offset(Vector2<T> offset) => Offset(offset.X, offset.Y);
+
+
     public bool Equals(Vector2<T> other) => EqualityComparer<T>.Default.Equals(X, other.X) &&
                                             EqualityComparer<T>.Default.Equals(Y, other.Y);
 

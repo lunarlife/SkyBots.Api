@@ -1,7 +1,7 @@
 using SkyBots.Api.Mathematics;
 using SkyBots.Api.Worlds;
 
-namespace SkyBots.Api.Components.Inventories;
+namespace SkyBots.Api.Inventories;
 
 public struct ItemStack
 {
@@ -33,6 +33,10 @@ public struct ItemStack
 
     public IReadOnlyList<Enchantment> Enchantments => _enchantments.AsReadOnly();
 
+    public ItemStack(Material material, int count) : this(material, count, Array.Empty<Enchantment>())
+    {
+    }
+
     public ItemStack(Material material, int count, Enchantment[] enchantments)
     {
         Material = material;
@@ -50,7 +54,7 @@ public struct ItemStack
     {
         rest = 0;
         if (stack.IsEmpty) return false;
-        
+
         if (!IsEmpty && stack._material != _material) return false;
         if (!stack._material.IsStackable && !IsEmpty) return false;
         rest = Mathe.Clamp(stack._count + _count - STACK_SIZE, 0, STACK_SIZE);
