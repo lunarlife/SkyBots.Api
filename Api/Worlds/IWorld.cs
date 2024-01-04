@@ -23,7 +23,7 @@ public interface IWorld
     public bool TryGetChunkAt(Vector2<int> position, out IChunk? chunk);
 
     public Task WaitForLoad();
-    
+
     public bool FindBlock(Material type, out IBlock? block);
     public bool FindBlock(Predicate<IBlock> predicate, out IBlock? block, bool cutEmptyAreas = true);
 
@@ -42,19 +42,23 @@ public interface IWorld
 
 
     public static Vector2<int> ToBlockInChunkPosition(float x, float z) =>
-        new((int)Math.Floor(x) & 15, (int)Math.Floor(z) & 15);
+        new((Mathe.Floor(x) + 8) & 15, (Mathe.Floor(z) + 8) & 15);
+
     public static Vector2<int> ToBlockInChunkPosition(int x, int z) =>
-        new(x & 15, z & 15);
+        new((x + 8) & 15, (z + 8) & 15);
+
     public static Vector3<int> ToBlockInChunkPosition(float x, float y, float z) =>
-        new((int)Math.Floor(x) & 15, (int)y, (int)Math.Floor(z) & 15);
+        new((Mathe.Floor(x) + 8) & 15, (int)y, (Mathe.Floor(z) + 8) & 15);
+
     public static Vector3<int> ToBlockInChunkPosition(int x, int y, int z) =>
-        new(x & 15, y, z & 15);
-    
+        new((x + 8) & 15, y, (z + 8) & 15);
+
     public static Vector2<int> ToBlockInChunkPosition(Vector2<float> position) =>
         ToBlockInChunkPosition(position.X, position.Y);
 
     public static Vector3<int> ToBlockInChunkPosition(Vector3<float> position) =>
         ToBlockInChunkPosition(position.X, position.Y, position.Z);
 
-    public static Vector3<int> ToBlockInChunkPosition(Vector3<int> position) => ToBlockInChunkPosition(position.X, position.Y, position.Z);
+    public static Vector3<int> ToBlockInChunkPosition(Vector3<int> position) =>
+        ToBlockInChunkPosition(position.X, position.Y, position.Z);
 }

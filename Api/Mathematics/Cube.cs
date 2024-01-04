@@ -3,16 +3,16 @@ using System.Numerics;
 
 namespace SkyBots.Api.Mathematics;
 
-public readonly struct Cube<T>: IEnumerable<Vector3<T>> where T : INumber<T>
+public readonly struct Cube<T> : IEnumerable<Vector3<T>> where T : INumber<T>
 {
     public Vector3<T> Start { get; }
     public Vector3<T> End { get; }
 
     public Cube(Vector3<T> position, T width, T height, T length)
     {
-        Preconditions.Min(width,T.Zero, nameof(width));
-        Preconditions.Min(height,T.Zero, nameof(height));
-        Preconditions.Min(length,T.Zero, nameof(length));
+        Preconditions.Min(width, T.Zero, nameof(width));
+        Preconditions.Min(height, T.Zero, nameof(height));
+        Preconditions.Min(length, T.Zero, nameof(length));
         Start = position;
         End = new Vector3<T>(position.X + width, position.Y + height, position.Z + length);
     }
@@ -29,9 +29,21 @@ public readonly struct Cube<T>: IEnumerable<Vector3<T>> where T : INumber<T>
         End = new Vector3<T>(xEnd, yEnd, zEnd);
     }
 
+    public Cube(T startX, T startY, T startZ, T endX, T endY, T endZ)
+    {
+        var xStart = Mathe.Min(startX, endX);
+        var yStart = Mathe.Min(startY, endY);
+        var zStart = Mathe.Min(startZ, endZ);
+        var xEnd = Mathe.Max(startX, endX);
+        var yEnd = Mathe.Max(startY, endY);
+        var zEnd = Mathe.Max(startZ, endZ);
+        Start = new Vector3<T>(xStart, yStart, zStart);
+        End = new Vector3<T>(xEnd, yEnd, zEnd);
+    }
+
     public Cube<T> Intersection(Cube<T> other)
     {
-        var start = Mathe.Max(Start,other.Start);
+        var start = Mathe.Max(Start, other.Start);
         var end = Mathe.Min(End, other.End);
         return new Cube<T>(start, end);
     }
@@ -43,17 +55,16 @@ public readonly struct Cube<T>: IEnumerable<Vector3<T>> where T : INumber<T>
             result = new Cube<T>();
             return false;
         }
-        var start = Mathe.Max(Start,other.Start);
-        var end = Mathe.Min(End, other.End);
-        result = new Cube<T>(start, end);
+        result = Intersection(other);
         return true;
     }
+
     public IEnumerator<Vector3<T>> GetEnumerator()
     {
         for (var x = Start.X; x <= End.X; x++)
         for (var y = Start.Y; y <= End.Y; y++)
         for (var z = Start.Z; z <= End.Z; z++)
-            yield return new Vector3<T>(x,y,z);
+            yield return new Vector3<T>(x, y, z);
     }
 
     IEnumerator IEnumerable.GetEnumerator()
