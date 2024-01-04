@@ -1,6 +1,6 @@
 namespace SkyBots.Api.Jobs.Instructions;
 
-internal class WaitNewJob : Instruction
+public class WaitNewJob : Instruction
 {
     private readonly IEnumerable<IInstruction?> _instructions;
     private IEnumerator<IInstruction?>? _enumerator;

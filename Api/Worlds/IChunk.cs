@@ -7,7 +7,7 @@ public interface IChunk
     public Vector2<int> Position { get; }
     public int X { get; }
     public int Y { get; }
-
+    public IWorld World { get; }
     public IBlock GetBlockAt(int x, int y, int z);
     public IBlock GetBlockAt(Vector3<int> position);
     public bool TryGetBlockAt(Vector3<int> position, out IBlock? block);

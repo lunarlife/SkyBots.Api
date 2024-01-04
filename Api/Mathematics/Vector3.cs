@@ -53,7 +53,7 @@ public struct Vector3<T> : IVector<T> where T : INumber<T>
             (T1)Convert.ChangeType(Z, type));
     }
 
-    public T[] AsArray() => new[] { X, Y, Z };
+    public T[] AsArray() => [X, Y, Z];
 
     public T Length() =>
         (T)Convert.ChangeType(Math.Sqrt(Convert.ToDouble(X * X + Y * Y + Z * Z)),
@@ -72,6 +72,7 @@ public struct Vector3<T> : IVector<T> where T : INumber<T>
 
     public Vector3<T> Offset(T x, T y, T z) => new(X + x, Y + y, Z + z);
     public Vector3<T> Offset(Vector3<T> offset) => Offset(offset.X, offset.Y, offset.Z);
+    public Vector3<T> DirectionTo(Vector3<T> position) => (position - this).Normalized();
 
     public bool Equals(Vector3<T> other) => EqualityComparer<T>.Default.Equals(X, other.X) &&
                                             EqualityComparer<T>.Default.Equals(Y, other.Y) &&
@@ -91,8 +92,7 @@ public struct Vector3<T> : IVector<T> where T : INumber<T>
     public static implicit operator Vector3<float>(Vector3<T> vector) =>
         new(Convert.ToSingle(vector.X), Convert.ToSingle(vector.Y), Convert.ToSingle(vector.Z));
 
-    public static implicit operator Vector3<int>(Vector3<T> vector) =>
-        new(Convert.ToInt32(vector.X), Convert.ToInt32(vector.Y), Convert.ToInt32(vector.Z));
+    public static implicit operator Vector3<int>(Vector3<T> vector) => new(Mathe.Floor(Convert.ToDouble(vector.X)), Mathe.Floor(Convert.ToDouble(vector.Y)), Mathe.Floor(Convert.ToDouble(vector.Z)));
 
     public static bool operator >(Vector3<T> left, Vector3<T> right) =>
         left.X > right.X || left.Y > right.Y || left.Z > right.Z;

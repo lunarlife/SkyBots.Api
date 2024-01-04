@@ -23,7 +23,7 @@ public struct Vector2<T> : IVector<T> where T : INumber<T>
         Y = y;
     }
 
-    public T[] AsArray() => new[] { X, Y };
+    public T[] AsArray() => [X, Y];
 
     public T Length()
     {
@@ -46,6 +46,8 @@ public struct Vector2<T> : IVector<T> where T : INumber<T>
     public Vector2<T> Offset(Vector2<T> offset) => Offset(offset.X, offset.Y);
 
 
+    public Vector2<T> DirectionTo(Vector2<T> position) => (position - this).Normalized();
+
     public bool Equals(Vector2<T> other) => EqualityComparer<T>.Default.Equals(X, other.X) &&
                                             EqualityComparer<T>.Default.Equals(Y, other.Y);
 
@@ -63,7 +65,7 @@ public struct Vector2<T> : IVector<T> where T : INumber<T>
         new(Convert.ToSingle(vector.X), Convert.ToSingle(vector.Y));
 
     public static implicit operator Vector2<int>(Vector2<T> vector) =>
-        new(Convert.ToInt32(vector.X), Convert.ToInt32(vector.Y));
+        new(Mathe.Floor(Convert.ToDouble(vector.X)), Mathe.Floor(Convert.ToDouble(vector.Y)));
 
     public static implicit operator Vector3<T>(Vector2<T> vector) => new(vector.X, vector.Y, T.Zero);
     public static bool operator >(Vector2<T> left, Vector2<T> right) => left.X > right.X || left.Y > right.Y;

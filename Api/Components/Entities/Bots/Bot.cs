@@ -33,6 +33,7 @@ public abstract class Bot : Component, IInventoryHolder<IBotInventory>
     public abstract string Name { get; set; }
     public abstract bool IsBound { get; }
     public abstract IBotInventory Inventory { get; }
+    
     public abstract Task<BotBindResult> Bind(string displayName);
     public abstract void Unbind();
     public abstract IRespawnTask Respawn();

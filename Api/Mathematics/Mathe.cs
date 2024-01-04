@@ -38,4 +38,10 @@ public static class Mathe
 
     public static Vector3<T> Max<T>(Vector3<T> value, Vector3<T> value2) where T : INumber<T> =>
         new(Max(value.X, value2.X), Max(value.Y, value2.Y), Max(value.Z, value2.Z));
+
+    public static int Floor(double var0)
+    {
+        var var2 = (int)var0;
+        return var0 < var2 ? var2 - 1 : var2;
+    }
 }

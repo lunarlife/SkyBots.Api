@@ -14,4 +14,9 @@ public abstract class Transform : Component
     public abstract IEventAccess<EntityPositionChangedEventArgs> OnPositionChanged { get; }
     public abstract IEventAccess<EntityViewChangedEventArgs> OnViewChanged { get; }
     public abstract IEventAccess<EntityIsOnGroundChangedEventArgs> OnIsOnGroundChanged { get; }
+    
+    public abstract IBlock BlockBelow { get; }
+    public abstract IBlock BlockAbove { get; }
+    public abstract IBlock BlockFeet { get; }
+    public abstract IBlock BlockHead { get; }
 }
