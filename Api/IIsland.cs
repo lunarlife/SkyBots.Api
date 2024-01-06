@@ -6,8 +6,6 @@ namespace SkyBots.Api;
 public interface IIsland
 {
     public IReadOnlyList<Bot> Bots { get; }
-    public IReadOnlyList<Bot> BoundBots { get; }
-    public IReadOnlyList<Bot> FreeBots { get; }
 
     public IReadOnlyList<IEntity> Entities { get; }
 
@@ -17,4 +15,8 @@ public interface IIsland
 
     public IEntity GetEntity(EntityId id);
     public bool TryGetEntity(EntityId id, out IEntity? entity);
+
+    public Bot[] GetFreeBots();
+    public Bot[] GetBoundBots();
+    public Bot[] GetNotAvailableBots();
 }

@@ -5,7 +5,9 @@ namespace SkyBots.Api.Worlds;
 public readonly struct BlockDirection
 {
     private const int DIRECTION_COUNT = 7;
-    private static readonly BlockDirection[] Directions = new BlockDirection[DIRECTION_COUNT];
+    private static readonly BlockDirection[] DirectionsArray = new BlockDirection[DIRECTION_COUNT];
+
+    public static IReadOnlyList<BlockDirection> Directions => DirectionsArray.AsReadOnly();
     public Vector3<int> Offset { get; }
     public int Id { get; }
 
@@ -18,7 +20,7 @@ public readonly struct BlockDirection
     public static BlockDirection FromId(int id)
     {
         Preconditions.Range(id, DIRECTION_COUNT - 1);
-        return Directions[id];
+        return DirectionsArray[id];
     }
 
     public static readonly BlockDirection SELF = new(0, 0, 0, 0);

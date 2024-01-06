@@ -28,12 +28,14 @@ public abstract class Bot : Component, IInventoryHolder<IBotInventory>
     public abstract float Health { get; }
     public abstract float Food { get; }
     public abstract float Vitality { get; }
+    public abstract bool IsFree { get; }
     public abstract IInventory? OpenedInventory { get; }
     public abstract BotNumber Number { get; }
     public abstract string Name { get; set; }
     public abstract bool IsBound { get; }
     public abstract IBotInventory Inventory { get; }
-    
+
+    public abstract bool CanInteract(Vector3<int> position);
     public abstract Task<BotBindResult> Bind(string displayName);
     public abstract void Unbind();
     public abstract IRespawnTask Respawn();

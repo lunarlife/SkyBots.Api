@@ -14,9 +14,9 @@ public interface IChunk
     public bool TryGetBlockAt(int x, int y, int z, out IBlock? block);
 
 
-    public bool FindBlock(Material type, out IBlock? block);
+    public bool FindBlock(out IBlock? block, params Material[] types);
     public bool FindBlock(Predicate<IBlock> predicate, out IBlock? block, bool cutEmptyAreas = true);
 
-    public bool FindBlock(Cube<int> area, Material type, out IBlock? block);
+    public bool FindBlock(Cube<int> area, out IBlock? block, params Material[] types);
     public bool FindBlock(Cube<int> area, Predicate<IBlock> predicate, out IBlock? block, bool cutEmptyAreas = true);
 }

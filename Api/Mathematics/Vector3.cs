@@ -74,6 +74,12 @@ public struct Vector3<T> : IVector<T> where T : INumber<T>
     public Vector3<T> Offset(Vector3<T> offset) => Offset(offset.X, offset.Y, offset.Z);
     public Vector3<T> DirectionTo(Vector3<T> position) => (position - this).Normalized();
 
+    public float DistanceSqr(Vector3<T> other)
+    {
+        var v1 = (Vector3<float>)this;
+        var v2 = (Vector3<float>)other;
+        return (v1.X - v2.X) * (v1.X - v2.X) + (v1.Y - v2.Y) * (v1.Y - v2.Y) + (v1.Z - v2.Z) * (v1.Z - v2.Z);
+    }
     public bool Equals(Vector3<T> other) => EqualityComparer<T>.Default.Equals(X, other.X) &&
                                             EqualityComparer<T>.Default.Equals(Y, other.Y) &&
                                             EqualityComparer<T>.Default.Equals(Z, other.Z);

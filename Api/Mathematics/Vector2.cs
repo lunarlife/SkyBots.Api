@@ -51,6 +51,13 @@ public struct Vector2<T> : IVector<T> where T : INumber<T>
     public bool Equals(Vector2<T> other) => EqualityComparer<T>.Default.Equals(X, other.X) &&
                                             EqualityComparer<T>.Default.Equals(Y, other.Y);
 
+    public float DistanceSqr(Vector2<T> other)
+    {
+        var v1 = (Vector2<float>)this;
+        var v2 = (Vector2<float>)other;
+        return (v1.X - v2.X) * (v1.X - v2.X) + (v1.Y - v2.Y) * (v1.Y - v2.Y);
+    }
+
     public override bool Equals(object? obj) => obj is Vector2<T> other && Equals(other);
 
     public override int GetHashCode() => HashCode.Combine(X, Y);
@@ -61,8 +68,11 @@ public struct Vector2<T> : IVector<T> where T : INumber<T>
 
     public static bool operator !=(Vector2<T> left, Vector2<T> right) => !(left == right);
 
-    public static implicit operator Vector2<float>(Vector2<T> vector) =>
-        new(Convert.ToSingle(vector.X), Convert.ToSingle(vector.Y));
+    public static implicit operator Vector2<float>(Vector2<T> vector)
+    {
+        if (vector is Vector2<float> v) return v;
+        return new Vector2<float>(Convert.ToSingle(vector.X), Convert.ToSingle(vector.Y));
+    }
 
     public static implicit operator Vector2<int>(Vector2<T> vector) =>
         new(Mathe.Floor(Convert.ToDouble(vector.X)), Mathe.Floor(Convert.ToDouble(vector.Y)));
